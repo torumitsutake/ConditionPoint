@@ -1,0 +1,20 @@
+name: ConditionPoint
+main: sitoa.minecraft.plugin.ConditionPoint.ConditionPoint
+version: 0.0.1
+
+commands:
+  setteam:
+    description: this is set player to team command.
+    usages: /setteam <player> <red/blue>
+    permission: sitoa.minecraft.plugin.ConditionPoint.setteam
+    permission-message: you don't have permission
+  gamestart:
+     description: gamestart command.
+     usages: /gamestart
+     permission: sitoa.minecraft.plugin.ConditionPoint.gamestart
+     permission-message: you don't have permission
+  reset:
+    description: reset command.
+    usages: /reset
+    permission: sitoa.minecraft.plugin.ConditionPoint.reset
+    permission-message: you don't have permission
