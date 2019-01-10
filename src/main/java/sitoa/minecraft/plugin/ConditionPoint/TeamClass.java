@@ -23,18 +23,19 @@ public class TeamClass {
         teamRed = board.getTeam("REDTEAM");
         if ( teamRed == null ) {
             teamRed = board.registerNewTeam("REDTEAM");
-            teamRed.setPrefix(ChatColor.RED.toString());
+            teamRed.setPrefix(ChatColor.RED.toString()+"[RED]");
             teamRed.setSuffix(ChatColor.RESET.toString());
             teamRed.setDisplayName("team red");
             teamRed.setAllowFriendlyFire(false);
+            teamRed.setColor(ChatColor.RED);
         }
         teamBlue = board.getTeam("BLUETEAM");
         if ( teamBlue == null ) {
             teamBlue = board.registerNewTeam("BLUETEAM");
-            teamBlue.setPrefix(ChatColor.BLUE.toString());
-            teamBlue.setSuffix(ChatColor.RESET.toString());
+            teamBlue.setPrefix(ChatColor.BLUE.toString()+"[BLUE]");
             teamBlue.setDisplayName("team blue");
             teamBlue.setAllowFriendlyFire(false);
+            teamBlue.setColor(ChatColor.BLUE);
         }
 
     }
@@ -49,12 +50,14 @@ public class TeamClass {
     public Scoreboard getboard(){
         return board;
     }
+
     public boolean setPlayertoTeam(Player player, String team) {
-        if (team == "red") {
+        if (team.equalsIgnoreCase("red")) {
             teamRed.addPlayer(player);
             return true;
-        } else if (team == "blue") {
+        } else if (team.equalsIgnoreCase("blue")) {
             teamBlue.addPlayer(player);
+
             return true;
         }
         return false;

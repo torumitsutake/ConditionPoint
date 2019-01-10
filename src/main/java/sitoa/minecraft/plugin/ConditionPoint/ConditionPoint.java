@@ -25,9 +25,12 @@ public class ConditionPoint extends JavaPlugin {
 
         if(cmd.getName().equalsIgnoreCase("setteam")){
             Player target = Bukkit.getServer().getPlayer(args[0]);
-            teamclass.setPlayertoTeam(target,args[1]);
-            Bukkit.broadcastMessage(args[0]);
-
+            if(teamclass.setPlayertoTeam(target,args[1])) {
+                Bukkit.broadcastMessage(args[0]);
+                target.sendMessage("you join the " + args[1] + "Team!");
+            }else{
+                sender.sendMessage("you have to choose red or blue");
+            }
             return true;
         }else
             if(cmd.getName().equalsIgnoreCase("gamestart")) {
