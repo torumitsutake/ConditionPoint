@@ -1,0 +1,5 @@
+gameconfig:
+  gametime: 300
+  autorule: false
+ruleconfig:
+  entitydeathpenalty: true

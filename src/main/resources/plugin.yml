@@ -13,8 +13,8 @@ commands:
      usages: /gamestart
      permission: sitoa.minecraft.plugin.ConditionPoint.gamestart
      permission-message: you don't have permission
-  reset:
+  gamereset:
     description: reset command.
-    usages: /reset
+    usages: /gamereset
     permission: sitoa.minecraft.plugin.ConditionPoint.reset
     permission-message: you don't have permission

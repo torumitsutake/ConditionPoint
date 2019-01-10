@@ -2,16 +2,16 @@ package sitoa.minecraft.plugin.ConditionPoint;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
+import org.bukkit.OfflinePlayer;
 import org.bukkit.entity.Player;
-import org.bukkit.scoreboard.Scoreboard;
-import org.bukkit.scoreboard.ScoreboardManager;
-import org.bukkit.scoreboard.Team;
+import org.bukkit.scoreboard.*;
 
 public class TeamClass {
     ScoreboardManager SBM =Bukkit.getScoreboardManager();
     Scoreboard board = SBM.getNewScoreboard();
     Team teamRed;
     Team teamBlue;
+    Objective teampoint;
 
 
     public TeamClass(){  // メインスコアボードを取得します。
@@ -33,9 +33,15 @@ public class TeamClass {
         if ( teamBlue == null ) {
             teamBlue = board.registerNewTeam("BLUETEAM");
             teamBlue.setPrefix(ChatColor.BLUE.toString()+"[BLUE]");
+            teamRed.setSuffix(ChatColor.RESET.toString());
             teamBlue.setDisplayName("team blue");
             teamBlue.setAllowFriendlyFire(false);
             teamBlue.setColor(ChatColor.BLUE);
+        }
+        teampoint = board.getObjective("teampoint");
+        if(teampoint == null){
+            teampoint = board.registerNewObjective("teampoint","dummy");
+            teampoint.setDisplaySlot(DisplaySlot.SIDEBAR);
         }
 
     }
@@ -61,5 +67,15 @@ public class TeamClass {
             return true;
         }
         return false;
+    }
+
+    //teamReset
+    public void teamReset(){
+        for(OfflinePlayer joinplayer: teamRed.getPlayers()){
+            teamRed.removePlayer(joinplayer);
+        }
+        for(OfflinePlayer joinplayer: teamBlue.getPlayers()){
+            teamBlue.removePlayer(joinplayer);
+        }
     }
 }

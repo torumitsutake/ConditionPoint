@@ -9,7 +9,7 @@ public class GameTimer extends BukkitRunnable {
     int counter = -5;
     int LIMITTIME = 300;
     private final JavaPlugin plugin;
-
+    ScoreManager SM;
 
 
     public GameTimer(JavaPlugin plugin, int TimerLimit){
@@ -21,6 +21,7 @@ public class GameTimer extends BukkitRunnable {
         }
         this.plugin = plugin;
         counter = -5;
+        SM = ScoreManager.getInstance();
 
     }
 
@@ -28,13 +29,15 @@ public class GameTimer extends BukkitRunnable {
     @Override
     public void run(){
         if(counter < 0){
-            Bukkit.broadcastMessage(ChatColor.AQUA+"ゲーム開始まで..."+counter+"");
-
+            Bukkit.broadcastMessage(ChatColor.AQUA+"ゲーム開始まで..."+((-1)*counter)+"");
         }else
         if(counter > LIMITTIME){
+
             Bukkit.broadcastMessage(ChatColor.RED+"ゲーム終了＾_＾");
             this.cancel();
+            ConditionPoint.gameStop();
         }else {
+            SM.LoadScorefromPlayer();
            // Bukkit.broadcastMessage(ChatColor.GREEN + "ゲーム残り時間" + (LIMITTIME - counter));
         }
             counter++;
