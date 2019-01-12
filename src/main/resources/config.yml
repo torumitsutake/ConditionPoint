@@ -1,5 +1,16 @@
 gameconfig:
   gametime: 300
   autorule: false
+  startlocation:
+    red:
+      x: 0
+      y: 0
+      z: 0
+    blue:
+      x: 0
+      y: 0
+      z: 0
+
+
 ruleconfig:
   entitydeathpenalty: true

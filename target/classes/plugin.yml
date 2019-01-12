@@ -18,3 +18,13 @@ commands:
     usages: /gamereset
     permission: sitoa.minecraft.plugin.ConditionPoint.reset
     permission-message: you don't have permission
+  startpoint:
+    description: set start location command.
+    usages: /startpoint [red/blue]
+    permission: sitoa.minecraft.plugin.ConditionPoint.setstartpoint
+    permission-message: you don't have permission
+  setgametime:
+    description: set game time command.
+    usages: /setgametime [second]
+    permission: sitoa.minecraft.plugin.ConditionPoint.setgametime
+    permission-message: you don't have permission

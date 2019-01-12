@@ -2,8 +2,14 @@ package sitoa.minecraft.plugin.ConditionPoint;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
+import org.bukkit.Location;
+import org.bukkit.OfflinePlayer;
+import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.scheduler.BukkitRunnable;
+import org.bukkit.scoreboard.Scoreboard;
+import org.bukkit.scoreboard.ScoreboardManager;
+import org.bukkit.scoreboard.Team;
 
 public class GameTimer extends BukkitRunnable {
     int counter = -5;
@@ -13,11 +19,11 @@ public class GameTimer extends BukkitRunnable {
 
 
     public GameTimer(JavaPlugin plugin, int TimerLimit){
-        if(TimerLimit < 60){
+        if(TimerLimit*60 < 60){
             LIMITTIME = 300;
-            throw new IllegalArgumentException("時刻には６０秒以上を設定してください。");
+            throw new IllegalArgumentException("時刻には一分以上を設定してください。");
         }else {
-            LIMITTIME = TimerLimit;
+            LIMITTIME = TimerLimit*60;
         }
         this.plugin = plugin;
         counter = -5;
@@ -31,11 +37,66 @@ public class GameTimer extends BukkitRunnable {
         if(counter < 0){
             Bukkit.broadcastMessage(ChatColor.AQUA+"ゲーム開始まで..."+((-1)*counter)+"");
         }else
+            if(counter == 0){
+                //初期位置にプレイヤーたちをテレポート
+                ScoreboardManager SBM = Bukkit.getScoreboardManager();
+                Scoreboard board = SBM.getMainScoreboard();
+                Team redteam = board.getTeam("REDTEAM");
+                Team blueteam  = board.getTeam("BLUETEAM");
+                //赤チームテレポート
+                Location redpoint = Bukkit.getServer().getWorld("world").getSpawnLocation();
+                redpoint.setX(plugin.getConfig().getDouble("gameconfig.startlocation.red.x"));
+                redpoint.setY(plugin.getConfig().getDouble("gameconfig.startlocation.red.y"));
+                redpoint.setZ(plugin.getConfig().getDouble("gameconfig.startlocation.red.z"));
+                for(OfflinePlayer joiner : redteam.getPlayers()){
+                    if(joiner.isOnline()){
+                        Player player = (Player)joiner;
+                        player.teleport(redpoint);
+                        player.setBedSpawnLocation(redpoint,true);
+                    }
+                }
+
+                //青チームテレポート
+                Location bluepoint = Bukkit.getServer().getWorld("world").getSpawnLocation();
+                bluepoint.setX(plugin.getConfig().getDouble("gameconfig.startlocation.blue.x"));
+                bluepoint.setY(plugin.getConfig().getDouble("gameconfig.startlocation.blue.y"));
+                bluepoint.setZ(plugin.getConfig().getDouble("gameconfig.startlocation.blue.z"));
+                for(OfflinePlayer joiner : blueteam.getPlayers()){
+                    if(joiner.isOnline()){
+                        Player player = (Player)joiner;
+                        player.teleport(bluepoint);
+                        player.setBedSpawnLocation(bluepoint,true);
+                    }
+                }
+
+
+            }else
+                //残り時間通知
+                if(counter == LIMITTIME-600){
+                    Bukkit.broadcastMessage("ゲーム終了１０分前");
+                }else
+                if(counter == LIMITTIME-300){
+                    Bukkit.broadcastMessage("ゲーム終了５分前");
+                }else
+                if(counter == LIMITTIME-60){
+                    Bukkit.broadcastMessage("ゲーム終了１分前");
+                }else
+                if(counter <= LIMITTIME   && counter > LIMITTIME-10){
+                    Bukkit.broadcastMessage("ゲーム終了まで"+(LIMITTIME-counter)+"秒");
+                }else
         if(counter > LIMITTIME){
 
             Bukkit.broadcastMessage(ChatColor.RED+"ゲーム終了＾_＾");
             this.cancel();
             ConditionPoint.gameStop();
+            Location loc = Bukkit.getServer().getWorld("world").getSpawnLocation();
+            loc.setX(plugin.getConfig().getDouble("gameconfig.startlocation.spawn.x"));
+            loc.setY(plugin.getConfig().getDouble("gameconfig.startlocation.spawn.y"));
+            loc.setZ(plugin.getConfig().getDouble("gameconfig.startlocation.spawn.z"));
+            for(Player p: Bukkit.getOnlinePlayers()){
+                p.setBedSpawnLocation(loc,true);
+                p.teleport(loc);
+            }
         }else {
             SM.LoadScorefromPlayer();
            // Bukkit.broadcastMessage(ChatColor.GREEN + "ゲーム残り時間" + (LIMITTIME - counter));

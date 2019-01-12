@@ -1,9 +1,6 @@
 package sitoa.minecraft.plugin.ConditionPoint;
 
-import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
-import org.bukkit.Material;
-import org.bukkit.OfflinePlayer;
+import org.bukkit.*;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
@@ -14,6 +11,7 @@ public class ConditionPoint extends JavaPlugin {
     GameTimer timer;
     TeamClass teamclass;
     ScoreManager SM;
+    ChestLock CL;
     public static boolean gamestart = false;
     @Override
     public void onEnable(){
@@ -21,6 +19,7 @@ public class ConditionPoint extends JavaPlugin {
         teamclass = new TeamClass();
         getLogger().info("ConditionPlugin has loaded.");
         SM = ScoreManager.getInstance();
+        CL = ChestLock.getInstance();
         //リスナー登録
         getServer().getPluginManager().registerEvents(new ListenerClass(),this);
     }
@@ -46,7 +45,7 @@ public class ConditionPoint extends JavaPlugin {
                 SM.pointreset();
                 int gametime = this.getConfig().getInt("gameconfig.gametime");
                 Bukkit.broadcastMessage(ChatColor.AQUA+"ゲームを開始します...");
-                Bukkit.broadcastMessage(ChatColor.AQUA+"ゲーム時間は"+gametime+"秒です！！");
+                Bukkit.broadcastMessage(ChatColor.AQUA+"ゲーム時間は"+gametime+"分です！！");
                 timer = new GameTimer(this,gametime);
                 timer.runTaskTimer(this,10,20);
                 gamestart = true;
@@ -59,14 +58,34 @@ public class ConditionPoint extends JavaPlugin {
                 gamestart = false;
                 return true;
             }else
-                if(cmd.getName().equalsIgnoreCase("setgametime")){
+                if(cmd.getName().equalsIgnoreCase("setgametime")) {
                     try {
                         this.getConfig().set("gameconfig.gametime", Integer.parseInt(args[0]));
                         this.saveConfig();
-                        sender.sendMessage(ChatColor.GREEN + "ゲーム時間を" + args[0] + "秒に設定しました。");
-                    }catch (NumberFormatException e){
-                        sender.sendMessage( ChatColor.RED+"引数には数字を秒数で指定してください。");
+                        sender.sendMessage(ChatColor.GREEN + "ゲーム時間を" + args[0] + "分に設定しました。");
+                    } catch (NumberFormatException e) {
+                        sender.sendMessage(ChatColor.RED + "引数には数字を分数で指定してください。");
                     }
+                    return true;
+                }
+                else if(cmd.getName().equalsIgnoreCase("startpoint")){
+                    if(args[0].equalsIgnoreCase("red") || args[0].equalsIgnoreCase("blue") || args[0].equalsIgnoreCase("spawn") ){
+                        if(sender instanceof  Player){
+                            Player player = (Player)sender;
+                            Location setloc = player.getLocation();
+                            this.getConfig().set("gameconfig.startlocation."+args[0]+".x",setloc.getX());
+                            this.getConfig().set("gameconfig.startlocation."+args[0]+".y",setloc.getY());
+                            this.getConfig().set("gameconfig.startlocation."+args[0]+".z",setloc.getZ());
+                            this.saveConfig();
+                            sender.sendMessage(args[0]+"チームの初期位置を決定しました。");
+                        }else{
+                            sender.sendMessage("プレイヤーから実行してください");
+                        }
+
+                    }else{
+                        sender.sendMessage("引数はred,blue,spawnにしてください。");
+                    }
+
                 }
 
 
