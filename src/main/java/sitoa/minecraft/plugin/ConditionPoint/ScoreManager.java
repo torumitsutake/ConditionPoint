@@ -9,6 +9,8 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.PlayerInventory;
 import org.bukkit.scoreboard.*;
 
+import java.util.ArrayList;
+
 public class ScoreManager {
     //シングルトン設計
     public static ScoreManager instance;
@@ -35,44 +37,65 @@ public class ScoreManager {
 
         }else if(team.equalsIgnoreCase("blue")){
                 parmBluePoint += changepoint;
+
             }
     }
 
     //アイテム→ポイント換算
-    int POINT_DIAMOND = 50;
-    int POINT_EMERALD = 40;
-    int POINT_GOLD = 20;
-    int POINT_LAPIS = 30;
-    int POINT_IRON = 10;
-    public int getPoint(Material type){
-        switch (type){
-            case DIAMOND:
-                return POINT_DIAMOND;
-            case EMERALD:
-                return POINT_EMERALD;
-            case GOLD_INGOT:
-                return POINT_GOLD;
-            case LAPIS_BLOCK:
-                return POINT_LAPIS;
-            case IRON_INGOT:
-                return POINT_IRON;
-            default:
-                return 0;
+
+
+    //Enum管理
+    protected enum POINTITEM{
+        DIAMOND(50,Material.DIAMOND),
+        EMERALD(40,Material.EMERALD),
+        GOLD_INGOT(20,Material.GOLD_INGOT),
+        LAPIS_BLOCK(30, Material.LAPIS_BLOCK),
+        IRON_INGOT(10,Material.IRON_INGOT),
+        REDSTONE_BLOCK(15,Material.REDSTONE_BLOCK),
+        DIAMOND_BLOCK(500,Material.DIAMOND_BLOCK),
+        GOLD_BLOCK(200,Material.GOLD_BLOCK),
+        EMERALD_BLOCK(400,Material.EMERALD_BLOCK),
+        IRON_BLOCK(100,Material.IRON_BLOCK),
+        GOLDEN_APPLE(190,Material.GOLDEN_APPLE),
+        SUGAR_CANE(5,Material.SUGAR_CANE);
+
+
+        private int point;
+        private Material type;
+
+
+        POINTITEM(int point,Material item){
+            this.point = point;
+            this.type = item;
+        }
+
+        public Material getType(){
+            return type;
+        }
+        public int getPoint(){
+            return point;
+        }
+
+        public void setPoint(int point) {
+            this.point = point;
         }
     }
 
+    public int getPoint(Material type){
+        for(POINTITEM item : POINTITEM.values()){
+            if(item.getType() == type){
+                return item.getPoint();
+            }
+        }
+        return 0;
+    }
+
     public void setPoint(Material type, int point){
-        switch (type){
-            case DIAMOND:
-                POINT_DIAMOND = point;
-            case EMERALD:
-                POINT_EMERALD = point;;
-            case GOLD_INGOT:
-                POINT_GOLD = point;
-            case LAPIS_BLOCK:
-                POINT_LAPIS = point;
-            case IRON_INGOT:
-                POINT_IRON = point;
+        for(POINTITEM item : POINTITEM.values()){
+            if(item.getType() == type){
+                item.setPoint(point);
+                return;
+            }
         }
     }
 
@@ -87,6 +110,22 @@ public class ScoreManager {
         BluePoint = 0;
         parmBluePoint = 0;
         parmRedPoint = 0;
+    }
+
+    //MVPプレイヤーの選出
+    public ArrayList<Player> getMVPPLayers(){
+        int max = -10000;
+                ArrayList<Player> MVP = new ArrayList<Player>();
+        for(Player p: Bukkit.getOnlinePlayers()){
+            int point = getPointfromPlayer(p);
+            if(max == point){
+                MVP.add(p);
+            }else if(max < point){
+                MVP.clear();
+                MVP.add(p);
+            }
+        }
+        return MVP;
     }
 
     //プレイヤーからスコアだし
@@ -110,7 +149,7 @@ public class ScoreManager {
     public void LoadScorefromPlayer(){
         ScoreboardManager SBM = Bukkit.getScoreboardManager();
         Scoreboard board = SBM.getMainScoreboard();
-        Objective TeamPoint = board.getObjective("teampoint");
+        Objective TeamPoint = board.getObjective(ChatColor.GREEN+"GameInfo");
         //redteam point calculate
         Team redteam = board.getTeam("REDTEAM");
         RedPoint = 0;
@@ -146,6 +185,7 @@ public class ScoreManager {
         Scoreboard board = SBM.getMainScoreboard();
         board.resetScores(ChatColor.RED + "RedPoint:");
         board.resetScores(ChatColor.BLUE + "BluePoint:");
+        board.resetScores(ChatColor.GREEN+"Time[min]:");
     }
 
 

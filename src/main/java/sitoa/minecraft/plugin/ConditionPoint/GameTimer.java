@@ -7,9 +7,9 @@ import org.bukkit.OfflinePlayer;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.scheduler.BukkitRunnable;
-import org.bukkit.scoreboard.Scoreboard;
-import org.bukkit.scoreboard.ScoreboardManager;
-import org.bukkit.scoreboard.Team;
+import org.bukkit.scoreboard.*;
+
+import java.util.ArrayList;
 
 public class GameTimer extends BukkitRunnable {
     int counter = -5;
@@ -34,15 +34,17 @@ public class GameTimer extends BukkitRunnable {
 
     @Override
     public void run(){
+        ScoreboardManager SBM = Bukkit.getScoreboardManager();
+        Scoreboard board = SBM.getMainScoreboard();
         if(counter < 0){
             Bukkit.broadcastMessage(ChatColor.AQUA+"ゲーム開始まで..."+((-1)*counter)+"");
         }else
             if(counter == 0){
                 //初期位置にプレイヤーたちをテレポート
-                ScoreboardManager SBM = Bukkit.getScoreboardManager();
-                Scoreboard board = SBM.getMainScoreboard();
                 Team redteam = board.getTeam("REDTEAM");
                 Team blueteam  = board.getTeam("BLUETEAM");
+
+
                 //赤チームテレポート
                 Location redpoint = Bukkit.getServer().getWorld("world").getSpawnLocation();
                 redpoint.setX(plugin.getConfig().getDouble("gameconfig.startlocation.red.x"));
@@ -72,21 +74,24 @@ public class GameTimer extends BukkitRunnable {
 
             }else
                 //残り時間通知
+                if(counter == LIMITTIME-900){
+                    Bukkit.broadcastMessage(ChatColor.GREEN+"ゲーム終了１5分前");
+                }else
                 if(counter == LIMITTIME-600){
-                    Bukkit.broadcastMessage("ゲーム終了１０分前");
-                }else
+                    Bukkit.broadcastMessage(ChatColor.GREEN+"ゲーム終了10分前");
+                }
                 if(counter == LIMITTIME-300){
-                    Bukkit.broadcastMessage("ゲーム終了５分前");
+                     Bukkit.broadcastMessage(ChatColor.GREEN+"ゲーム終了５分前");
                 }else
-                if(counter == LIMITTIME-60){
-                    Bukkit.broadcastMessage("ゲーム終了１分前");
+                if(counter == LIMITTIME-60) {
+                    Bukkit.broadcastMessage(ChatColor.GREEN + "ゲーム終了1分前");
                 }else
                 if(counter <= LIMITTIME   && counter > LIMITTIME-10){
-                    Bukkit.broadcastMessage("ゲーム終了まで"+(LIMITTIME-counter)+"秒");
+                    Bukkit.broadcastMessage(ChatColor.GREEN +"ゲーム終了まで"+(LIMITTIME-counter)+"秒");
                 }else
         if(counter > LIMITTIME){
 
-            Bukkit.broadcastMessage(ChatColor.RED+"ゲーム終了＾_＾");
+            Bukkit.broadcastMessage(ChatColor.RED+"ゲーム終了!");
             this.cancel();
             ConditionPoint.gameStop();
             Location loc = Bukkit.getServer().getWorld("world").getSpawnLocation();
@@ -97,11 +102,20 @@ public class GameTimer extends BukkitRunnable {
                 p.setBedSpawnLocation(loc,true);
                 p.teleport(loc);
             }
-        }else {
-            SM.LoadScorefromPlayer();
-           // Bukkit.broadcastMessage(ChatColor.GREEN + "ゲーム残り時間" + (LIMITTIME - counter));
+            Bukkit.broadcastMessage(ChatColor.GOLD+"[MVP PLAYER]");
+            ArrayList<Player> MVPs = SM.getMVPPLayers();
+            for(Player p : MVPs){
+                Bukkit.broadcastMessage(ChatColor.GOLD+"[MVP]"+p.getDisplayName()+"   "+SM.getPointfromPlayer(p)+"pt");
+            }
+
         }
-            counter++;
+        SM.LoadScorefromPlayer();
+        //時間表示用スコア設定
+        Objective TeamPoint = board.getObjective(ChatColor.GREEN+"GameInfo");
+        int minutes = (LIMITTIME-counter)/60;
+        Score Time = TeamPoint.getScore(ChatColor.GREEN+"Time[min]:");
+        Time.setScore(minutes);
+        counter++;
     }
 
 }

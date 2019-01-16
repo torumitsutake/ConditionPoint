@@ -38,9 +38,9 @@ public class TeamClass {
             teamBlue.setAllowFriendlyFire(false);
             teamBlue.setColor(ChatColor.BLUE);
         }
-        teampoint = board.getObjective("teampoint");
+        teampoint = board.getObjective(ChatColor.GREEN+"GameInfo");
         if(teampoint == null){
-            teampoint = board.registerNewObjective("teampoint","dummy");
+            teampoint = board.registerNewObjective(ChatColor.GREEN+"GameInfo","dummy");
             teampoint.setDisplaySlot(DisplaySlot.SIDEBAR);
         }
 

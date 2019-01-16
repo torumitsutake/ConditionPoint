@@ -10,7 +10,16 @@ gameconfig:
       x: 0
       y: 0
       z: 0
+    spawn:
+      x: 0
+      y: 0
+      z: 0
+
 
 
 ruleconfig:
-  entitydeathpenalty: true
+  entitykillpenalty: true
+  desartdamagerule: true
+  magmadeathtopoint: true
+  tamereward: true
+

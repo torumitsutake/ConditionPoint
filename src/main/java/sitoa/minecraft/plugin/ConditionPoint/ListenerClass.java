@@ -1,7 +1,10 @@
 package sitoa.minecraft.plugin.ConditionPoint;
 
 import org.bukkit.Bukkit;
+import org.bukkit.Location;
 import org.bukkit.Material;
+import org.bukkit.World;
+import org.bukkit.block.Biome;
 import org.bukkit.block.Block;
 import org.bukkit.block.Chest;
 import org.bukkit.block.DoubleChest;
@@ -10,11 +13,13 @@ import org.bukkit.entity.Item;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.event.entity.EntityDeathEvent;
 import org.bukkit.event.inventory.InventoryOpenEvent;
 import org.bukkit.event.player.PlayerChatEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.event.player.PlayerLoginEvent;
+import org.bukkit.event.player.PlayerMoveEvent;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.scoreboard.Scoreboard;
@@ -28,35 +33,9 @@ public class ListenerClass implements Listener {
 
     }
 
-    @EventHandler
-    public void playerkillOther(EntityDeathEvent e){
-        if(ConditionPoint.gameRunning()) {
-            Player killer = e.getEntity().getKiller();
-            ScoreManager SM = ScoreManager.getInstance();
-            ScoreboardManager manager = Bukkit.getScoreboardManager();
-            Scoreboard board = manager.getMainScoreboard();
-            if (board.getTeam("REDTEAM").getPlayers().contains(killer)) {
-                if(e.getEntity().getType() == EntityType.PLAYER){
-                    SM.parmPointChange("red", -100);
 
-                }else {
-                    SM.parmPointChange("red", -10);
-                }
-            }
-
-            if (board.getTeam("BLUETEAM").getPlayers().contains(killer)) {
-                if(e.getEntity().getType() == EntityType.PLAYER){
-                    SM.parmPointChange("blue", -100);
-
-                }else {
-                    SM.parmPointChange("blue", -10);
-                }
-
-            }
-        }
-    }
-
-    ///�`�F�X�g���b�N�@�\
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    //チェストロック機能
     @EventHandler
     public void onInventoryOpenEvent(InventoryOpenEvent e){
         ChestLock CL = ChestLock.getInstance();
@@ -84,7 +63,9 @@ public class ListenerClass implements Listener {
 
     @EventHandler
     public void onPlayerInteractEvent(PlayerInteractEvent e){
-        System.out.println("onPlayerInteractEvent:");
+        if(!e.hasBlock()){
+            return;
+        }
 
         if(e.getClickedBlock().getType()== Material.CHEST){
             System.out.println("ChestClicked");
@@ -147,6 +128,19 @@ public class ListenerClass implements Listener {
         }
 
     }
+
+    @EventHandler
+    public void onPlayerBlockBreakEvent(BlockBreakEvent e){
+        if(e.getBlock().getType() == Material.CHEST){
+            ChestLock CL = ChestLock.getInstance();
+            if(!CL.canBreak(e.getBlock().getLocation())){
+                e.setCancelled(true);
+                e.getPlayer().sendMessage("このチェストはロックされています。");
+            }
+        }
+    }
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 
 
 

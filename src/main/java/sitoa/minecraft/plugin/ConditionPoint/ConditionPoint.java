@@ -5,12 +5,13 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
-import org.bukkit.scoreboard.Score;
+import sitoa.minecraft.plugin.ConditionPoint.GameRule.GameRuleManager;
 
 public class ConditionPoint extends JavaPlugin {
     GameTimer timer;
     TeamClass teamclass;
     ScoreManager SM;
+    GameRuleManager GRM;
     ChestLock CL;
     public static boolean gamestart = false;
     @Override
@@ -20,13 +21,16 @@ public class ConditionPoint extends JavaPlugin {
         getLogger().info("ConditionPlugin has loaded.");
         SM = ScoreManager.getInstance();
         CL = ChestLock.getInstance();
+        GRM = GameRuleManager.getInstance();
+        GRM.setPlugin(this);
+        GRM.firstLoad();
         //リスナー登録
         getServer().getPluginManager().registerEvents(new ListenerClass(),this);
     }
 
     @Override
     public void onDisable(){
-        getLogger().info("ConditionPlugin has Disable.");
+        getLogger().info("[ConditionPoint]"+"ConditionPlugin has Disable.");
     }
     public boolean onCommand(CommandSender sender, Command cmd, String commandLabel, String[] args) {
 
@@ -45,10 +49,10 @@ public class ConditionPoint extends JavaPlugin {
                 SM.pointreset();
                 int gametime = this.getConfig().getInt("gameconfig.gametime");
                 Bukkit.broadcastMessage(ChatColor.AQUA+"ゲームを開始します...");
+                gamestart = true;
                 Bukkit.broadcastMessage(ChatColor.AQUA+"ゲーム時間は"+gametime+"分です！！");
                 timer = new GameTimer(this,gametime);
                 timer.runTaskTimer(this,10,20);
-                gamestart = true;
          return true;
         }else
             //ゲームリセットコマンド
@@ -58,6 +62,7 @@ public class ConditionPoint extends JavaPlugin {
                 gamestart = false;
                 return true;
             }else
+                //ゲーム時間設定コマンド
                 if(cmd.getName().equalsIgnoreCase("setgametime")) {
                     try {
                         this.getConfig().set("gameconfig.gametime", Integer.parseInt(args[0]));
@@ -68,6 +73,7 @@ public class ConditionPoint extends JavaPlugin {
                     }
                     return true;
                 }
+                //初期位置を決めるコマンド
                 else if(cmd.getName().equalsIgnoreCase("startpoint")){
                     if(args[0].equalsIgnoreCase("red") || args[0].equalsIgnoreCase("blue") || args[0].equalsIgnoreCase("spawn") ){
                         if(sender instanceof  Player){

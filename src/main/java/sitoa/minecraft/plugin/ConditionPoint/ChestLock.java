@@ -67,6 +67,50 @@ public class ChestLock {
         }
     }
 
+    public boolean canBreak(Location loc){
+        System.out.println("BreakChest:");
+        Location loc1 = loc.clone();
+        Location loc2 = loc.clone();
+        Location loc3 = loc.clone();
+        Location loc4 = loc.clone();
+        loc1.setX(loc.getX() - 1);
+        loc2.setX(loc.getX() + 1);
+        loc3.setZ(loc.getZ() - 1);
+        loc4.setZ(loc.getZ() + 1);
+
+        if(redChests.containsKey(loc)){
+            return false;
+        }
+        if(redChests.containsKey(loc1)){
+            return false;
+        }
+        if(redChests.containsKey(loc2)){
+            return false;
+        }
+        if(redChests.containsKey(loc3)){
+            return false;
+        }
+        if(redChests.containsKey(loc4)){
+            return false;
+        }
+        if(blueChests.containsKey(loc)){
+            return false;
+        }
+        if(blueChests.containsKey(loc1)){
+            return false;
+        }
+        if(blueChests.containsKey(loc2)){
+            return false;
+        }
+        if(blueChests.containsKey(loc3)){
+            return false;
+        }
+        if(blueChests.containsKey(loc4)){
+            return false;
+        }
+        return true;
+    }
+
     public boolean UnlockChest(Location loc){
         System.out.println("UnLockChest:");
         Location loc1 = loc.clone();
