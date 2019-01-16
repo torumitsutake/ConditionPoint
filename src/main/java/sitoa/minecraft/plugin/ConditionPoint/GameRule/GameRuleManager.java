@@ -2,10 +2,7 @@ package sitoa.minecraft.plugin.ConditionPoint.GameRule;
 
 import org.bukkit.plugin.java.JavaPlugin;
 import sitoa.minecraft.plugin.ConditionPoint.ConditionPoint;
-import sitoa.minecraft.plugin.ConditionPoint.GameRule.Rules.DesertDamage;
-import sitoa.minecraft.plugin.ConditionPoint.GameRule.Rules.EntityKillPenalty;
-import sitoa.minecraft.plugin.ConditionPoint.GameRule.Rules.MagmaDeathtoPoint;
-import sitoa.minecraft.plugin.ConditionPoint.GameRule.Rules.PlayerTamedtoPoint;
+import sitoa.minecraft.plugin.ConditionPoint.GameRule.Rules.*;
 import sitoa.minecraft.plugin.ConditionPoint.ScoreManager;
 
 import java.util.ArrayList;
@@ -88,7 +85,8 @@ public class GameRuleManager {
         EntityKillPenalty("entitykillpenalty", new EntityKillPenalty()),
         DesertDamage("desartdamagerule",new DesertDamage()),
         MagmaDeathPointReward("magmadeathtopoint",new MagmaDeathtoPoint()),
-        TameReward("tamereward", new PlayerTamedtoPoint());
+        TameReward("tamereward", new PlayerTamedtoPoint()),
+        TorchPenalty("torchpenalty",new TorchPlacePenalty());
 
         private String cofigName;
         private BaseRule rule;

@@ -20,6 +20,7 @@ public class MagmaDeathtoPoint extends BaseRuleListener {
             player.sendMessage("b");
             ScoreManager SM = ScoreManager.getInstance();
             changePoint(player,SM.getPointfromPlayer(player));
+            player.getInventory().clear();
         }
     }
 }

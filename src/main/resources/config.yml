@@ -22,4 +22,5 @@ ruleconfig:
   desartdamagerule: true
   magmadeathtopoint: true
   tamereward: true
+  torchpenalty: true
 

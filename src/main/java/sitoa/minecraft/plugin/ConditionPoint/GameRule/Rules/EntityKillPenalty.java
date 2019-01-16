@@ -19,7 +19,7 @@ public class EntityKillPenalty extends BaseRuleListener {
                 if (e.getEntity().getType() == EntityType.PLAYER) {
                     changePoint(killer,-100);
                 } else if (e.getEntityType() == EntityType.ENDER_DRAGON) {
-                    changePoint(killer,5000);
+                    changePoint(killer,20000);
                 } else {
                     changePoint(killer,-10);
                 }
