@@ -1,11 +1,7 @@
 package sitoa.minecraft.plugin.ConditionPoint.GameRule;
 
-import org.bukkit.plugin.java.JavaPlugin;
 import sitoa.minecraft.plugin.ConditionPoint.ConditionPoint;
 import sitoa.minecraft.plugin.ConditionPoint.GameRule.Rules.*;
-import sitoa.minecraft.plugin.ConditionPoint.ScoreManager;
-
-import java.util.ArrayList;
 import java.util.HashMap;
 
 public class GameRuleManager {

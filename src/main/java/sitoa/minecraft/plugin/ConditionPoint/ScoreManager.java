@@ -57,7 +57,8 @@ public class ScoreManager {
         EMERALD_BLOCK(400,Material.EMERALD_BLOCK),
         IRON_BLOCK(100,Material.IRON_BLOCK),
         GOLDEN_APPLE(190,Material.GOLDEN_APPLE),
-        SUGAR_CANE(5,Material.SUGAR_CANE);
+        SUGAR_CANE(5,Material.SUGAR_CANE),
+        ENDERPEARL(20,Material.ENDER_PEARL);
 
 
         private int point;

@@ -6,7 +6,6 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.entity.EntityDeathEvent;
 import sitoa.minecraft.plugin.ConditionPoint.ConditionPoint;
 import sitoa.minecraft.plugin.ConditionPoint.GameRule.BaseRuleListener;
-import sitoa.minecraft.plugin.ConditionPoint.ScoreManager;
 
 public class EntityKillPenalty extends BaseRuleListener {
     @EventHandler
