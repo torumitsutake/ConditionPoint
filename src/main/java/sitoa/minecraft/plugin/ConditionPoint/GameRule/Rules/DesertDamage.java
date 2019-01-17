@@ -14,9 +14,9 @@ public class DesertDamage extends BaseRuleListener {
         World world = loc.getWorld();
         Biome biome = world.getBiome(loc.getBlockX(),loc.getBlockZ());
         if(biome == Biome.DESERT  || biome == Biome.DESERT_HILLS){
-            int percent = (int)(Math.random()*100);
+            int percent = (int)(Math.random()*200);
             if(percent == 0){
-                e.getPlayer().damage(1);
+                e.getPlayer().damage(2);
             }
         }
 

@@ -23,4 +23,6 @@ ruleconfig:
   magmadeathtopoint: true
   tamereward: true
   torchpenalty: true
+  luckyegg: true
+  skeltonchangereward: true
 

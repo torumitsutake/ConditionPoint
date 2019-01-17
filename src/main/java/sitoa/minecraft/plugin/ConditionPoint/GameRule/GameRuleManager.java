@@ -82,7 +82,9 @@ public class GameRuleManager {
         DesertDamage("desartdamagerule",new DesertDamage()),
         MagmaDeathPointReward("magmadeathtopoint",new MagmaDeathtoPoint()),
         TameReward("tamereward", new PlayerTamedtoPoint()),
-        TorchPenalty("torchpenalty",new TorchPlacePenalty());
+        TorchPenalty("torchpenalty",new TorchPlacePenalty()),
+        LuckyEgg("luckyegg",new LuckyEgg()),
+        SkeltonReward("skeltonchangereward", new SkeltonChangeReward());
 
         private String cofigName;
         private BaseRule rule;

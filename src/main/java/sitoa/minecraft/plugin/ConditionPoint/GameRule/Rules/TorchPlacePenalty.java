@@ -12,6 +12,9 @@ public class TorchPlacePenalty extends BaseRuleListener {
     @EventHandler
     public void onPlayerBlockPlace(BlockPlaceEvent e) {
         if (ConditionPoint.gameRunning()) {
+            if(!this.isEnable()){
+                return;
+            }
             if (e.getBlock().getType() == Material.TORCH) {
                 Player player = e.getPlayer();
                 changePoint(player, -1);

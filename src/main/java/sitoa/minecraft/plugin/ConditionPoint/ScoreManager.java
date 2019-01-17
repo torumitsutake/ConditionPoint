@@ -58,7 +58,9 @@ public class ScoreManager {
         IRON_BLOCK(100,Material.IRON_BLOCK),
         GOLDEN_APPLE(190,Material.GOLDEN_APPLE),
         SUGAR_CANE(5,Material.SUGAR_CANE),
-        ENDERPEARL(20,Material.ENDER_PEARL);
+        ENDERPEARL(20,Material.ENDER_PEARL),
+        BLAZEROD(10,Material.BLAZE_ROD),
+        OBSIDIAN(20,Material.OBSIDIAN);
 
 
         private int point;
@@ -81,6 +83,7 @@ public class ScoreManager {
             this.point = point;
         }
     }
+
 
     public int getPoint(Material type){
         for(POINTITEM item : POINTITEM.values()){
