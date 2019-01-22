@@ -4,12 +4,17 @@ import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.block.Chest;
 import org.bukkit.block.DoubleChest;
+import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockBreakEvent;
+import org.bukkit.event.block.BlockPlaceEvent;
+import org.bukkit.event.entity.EntityDamageByEntityEvent;
+import org.bukkit.event.entity.EntityPickupItemEvent;
 import org.bukkit.event.inventory.InventoryOpenEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.event.player.PlayerLoginEvent;
+import org.bukkit.event.player.PlayerPickupItemEvent;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.scoreboard.Scoreboard;
@@ -130,7 +135,60 @@ public class ListenerClass implements Listener {
     }
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+//ゲーム前保護
+    @EventHandler
+    public void onPlayerInteract(PlayerInteractEvent e){
+        if(!ConditionPoint.gameRunning()){
+            if(!e.getPlayer().isOp()){
+                e.setCancelled(true);
+            }
+        }
 
+    }
+    @EventHandler
+    public void onBlockBreakEvent(BlockBreakEvent e){
+        if(!ConditionPoint.gameRunning()){
+            if(!e.getPlayer().isOp()){
+                e.setCancelled(true);
+            }
+        }
+    }
+
+    @EventHandler
+    public void onPlayerpickup(EntityPickupItemEvent e){
+        if(e.getEntity() instanceof Player){
+            if(!ConditionPoint.gameRunning()){
+                Player p = (Player) e.getEntity();
+                if(!p.isOp()){
+                    e.setCancelled(true);
+                }
+            }
+        }
+    }
+
+    @EventHandler
+    public void onPlayerDamage(EntityDamageByEntityEvent e){
+        if(!ConditionPoint.gameRunning()){
+            if(e.getDamager() instanceof Player){
+               Player p = (Player)e.getDamager();
+               if(!p.isOp()){
+                   e.setCancelled(true);
+               }
+            }else if(e.getEntity() instanceof  Player){
+                e.setCancelled(true);
+            }
+        }
+    }
+
+    @EventHandler
+    public void onPlayerBlockPlace(BlockPlaceEvent e){
+        if(!ConditionPoint.gameRunning()){
+            if(!e.getPlayer().isOp()){
+                e.setCancelled(true);
+            }
+        }
+
+    }
 
 
 

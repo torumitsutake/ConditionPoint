@@ -6,7 +6,6 @@ import org.bukkit.inventory.Inventory;
 import java.util.HashMap;
 
 public class ChestLock {
-    //�V���O���g���݌v
     private static ChestLock instance;
 
     private ChestLock(){

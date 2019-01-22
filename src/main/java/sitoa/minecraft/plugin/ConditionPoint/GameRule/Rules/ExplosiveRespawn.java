@@ -15,9 +15,7 @@ public class ExplosiveRespawn extends BaseRuleListener {
             if(!this.isEnable()){
                 return;
             }
-            Entity ent = e.getEntity();
-            EntityDamageEvent ede = ent.getLastDamageCause();
-            EntityDamageEvent.DamageCause dc = ede.getCause();
+            EntityDamageEvent.DamageCause dc = e.getCause();
             if(e.getEntity() instanceof Player && dc == EntityDamageEvent.DamageCause.ENTITY_EXPLOSION){
                 int percent = (int)(Math.random()*2);
                 if(percent == 0) {
@@ -26,6 +24,7 @@ public class ExplosiveRespawn extends BaseRuleListener {
                         e.setCancelled(true);
                         p.teleport(p.getBedSpawnLocation());
                         p.sendMessage(ChatColor.RED + "爆発オチなんてサイテー！");
+                        changePoint(p,-100);
                     }
                 }
             }

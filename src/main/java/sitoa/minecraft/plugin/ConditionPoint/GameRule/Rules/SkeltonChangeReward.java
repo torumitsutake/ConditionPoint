@@ -26,7 +26,7 @@ public class SkeltonChangeReward extends BaseRuleListener {
             }else
                 if(e.getEntity().getType() == EntityType.WITHER_SKELETON){
 
-                    changePoint(killer,100);
+                    changePoint(killer,110);
 
                 }
 
