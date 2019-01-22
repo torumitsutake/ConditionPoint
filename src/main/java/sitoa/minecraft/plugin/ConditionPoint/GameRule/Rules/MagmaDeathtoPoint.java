@@ -20,7 +20,7 @@ public class MagmaDeathtoPoint extends BaseRuleListener {
             Entity ent = e.getEntity();
             EntityDamageEvent ede = ent.getLastDamageCause();
             EntityDamageEvent.DamageCause dc = ede.getCause();
-            if (ent instanceof Player && dc == EntityDamageEvent.DamageCause.LAVA) {
+            if (ent instanceof Player && (dc == EntityDamageEvent.DamageCause.LAVA || dc == EntityDamageEvent.DamageCause.FIRE  || dc == EntityDamageEvent.DamageCause.FIRE_TICK)){
                 Player player = (Player) ent;
                 player.sendMessage("b");
                 ScoreManager SM = ScoreManager.getInstance();

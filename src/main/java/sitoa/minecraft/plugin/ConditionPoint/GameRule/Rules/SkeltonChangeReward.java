@@ -17,7 +17,7 @@ public class SkeltonChangeReward extends BaseRuleListener {
             }
             Player killer = e.getEntity().getKiller();
             if(e.getEntity().getType() == EntityType.SKELETON){
-                int percent = (int)(Math.random()*20);
+                int percent = (int)(Math.random()*10);
                 if(percent == 0){
                     e.getEntity().getLocation().getWorld().spawnEntity(e.getEntity().getLocation(),EntityType.WITHER_SKELETON);
                     killer.sendMessage(ChatColor.DARK_PURPLE+"まだおわらん！");

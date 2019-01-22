@@ -60,7 +60,15 @@ public class ScoreManager {
         SUGAR_CANE(5,Material.SUGAR_CANE),
         ENDERPEARL(20,Material.ENDER_PEARL),
         BLAZEROD(10,Material.BLAZE_ROD),
-        OBSIDIAN(20,Material.OBSIDIAN);
+        OBSIDIAN(20,Material.OBSIDIAN),
+        COAL(1,Material.COAL),
+        PISTON(300,Material.PISTON_BASE),
+        WaterMelon(20,Material.MELON_BLOCK),
+        GASTTEAR(100, Material.GHAST_TEAR),
+        HEAD(2000,Material.SKULL_ITEM),
+        ENCHANTBOOK(100,Material.ENCHANTED_BOOK),
+        PUMPKIN(20,Material.PUMPKIN);
+
 
 
         private int point;
@@ -127,6 +135,7 @@ public class ScoreManager {
             }else if(max < point){
                 MVP.clear();
                 MVP.add(p);
+                max = point;
             }
         }
         return MVP;
