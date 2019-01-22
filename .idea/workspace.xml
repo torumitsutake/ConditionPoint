@@ -6,14 +6,9 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="28f340f9-220f-40d6-9e15-3111f5e475c4" name="Default Changelist" comment="+add gamerule drowninwater">
-      <change afterPath="$PROJECT_DIR$/src/main/java/sitoa/minecraft/plugin/ConditionPoint/GameRule/Rules/DrowninWater.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/sitoa/minecraft/plugin/ConditionPoint/GameRule/Rules/ExplosiveRespawn.java" afterDir="false" />
+    <list default="true" id="28f340f9-220f-40d6-9e15-3111f5e475c4" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/sitoa/minecraft/plugin/ConditionPoint/GameRule/GameRuleManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/sitoa/minecraft/plugin/ConditionPoint/GameRule/GameRuleManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/sitoa/minecraft/plugin/ConditionPoint/GameRule/Rules/MagmaDeathtoPoint.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/sitoa/minecraft/plugin/ConditionPoint/GameRule/Rules/MagmaDeathtoPoint.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/config.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/config.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/sitoa/minecraft/plugin/ConditionPoint/ListenerClass.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sitoa/minecraft/plugin/ConditionPoint/ListenerClass.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/Readme.md" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -30,7 +25,7 @@
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/main/java/sitoa/minecraft/plugin/ConditionPoint/GameRule/GameRuleManager.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="202">
+                <state relative-caret-position="958">
                   <caret line="82" column="30" selection-start-line="82" selection-start-column="30" selection-end-line="82" selection-end-column="30" />
                   <folding>
                     <element signature="imports" expanded="true" />
@@ -42,7 +37,7 @@
               </provider>
             </entry>
           </file>
-          <file pinned="false" current-in-tab="true">
+          <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/main/java/sitoa/minecraft/plugin/ConditionPoint/GameRule/Rules/ExplosiveRespawn.java">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="288">
@@ -62,6 +57,33 @@
                   <folding>
                     <element signature="imports" expanded="true" />
                   </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/main/java/sitoa/minecraft/plugin/ConditionPoint/GameRule/BaseRule.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="205">
+                  <caret line="16" column="36" selection-start-line="16" selection-start-column="36" selection-end-line="16" selection-end-column="36" />
+                  <folding>
+                    <element signature="imports" expanded="true" />
+                    <element signature="e#426#427#0" expanded="true" />
+                    <element signature="method#getPlayerTeam#0;class#BaseRule#0" />
+                    <element signature="method#changePoint#0;class#BaseRule#0" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/Readme.md">
+              <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+                <state split_layout="SPLIT">
+                  <first_editor relative-caret-position="472">
+                    <caret line="76" column="33" selection-start-line="76" selection-start-column="33" selection-end-line="76" selection-end-column="33" />
+                  </first_editor>
+                  <second_editor />
                 </state>
               </provider>
             </entry>
@@ -127,7 +149,7 @@
               </provider>
             </entry>
           </file>
-          <file pinned="false" current-in-tab="true">
+          <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/main/java/sitoa/minecraft/plugin/ConditionPoint/GameRule/Rules/LuckyEgg.java">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="225">
@@ -151,10 +173,10 @@
               </provider>
             </entry>
           </file>
-          <file pinned="false" current-in-tab="false">
+          <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/main/java/sitoa/minecraft/plugin/ConditionPoint/ScoreManager.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="1050">
+                <state relative-caret-position="505">
                   <caret line="85" selection-start-line="85" selection-end-line="85" />
                   <folding>
                     <element signature="imports" expanded="true" />
@@ -239,7 +261,6 @@
         <option value="$PROJECT_DIR$/src/main/java/sitoa/minecraft/plugin/ConditionPoint/GameTimer.java" />
         <option value="$PROJECT_DIR$/src/main/java/sitoa/minecraft/plugin/ConditionPoint/GameRule/BaseRule.java" />
         <option value="$PROJECT_DIR$/LICENSE.txt" />
-        <option value="$PROJECT_DIR$/Readme.md" />
         <option value="$PROJECT_DIR$/やること.txt" />
         <option value="$PROJECT_DIR$/src/main/java/sitoa/minecraft/plugin/ConditionPoint/GameRule/Rules/EntityKillPenalty.java" />
         <option value="$PROJECT_DIR$/src/main/java/sitoa/minecraft/plugin/ConditionPoint/ChestLock.java" />
@@ -257,6 +278,7 @@
         <option value="$PROJECT_DIR$/src/main/resources/config.yml" />
         <option value="$PROJECT_DIR$/src/main/java/sitoa/minecraft/plugin/ConditionPoint/GameRule/GameRuleManager.java" />
         <option value="$PROJECT_DIR$/src/main/java/sitoa/minecraft/plugin/ConditionPoint/GameRule/Rules/ExplosiveRespawn.java" />
+        <option value="$PROJECT_DIR$/Readme.md" />
       </list>
     </option>
   </component>
@@ -362,7 +384,7 @@
     <property name="GenerateAntBuildDialog.enableUiFormCompile" value="true" />
     <property name="GenerateAntBuildDialog.forceTargetJdk" value="true" />
     <property name="GenerateAntBuildDialog.outputFileNameProperty" value="conditionpoint" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1548134061687" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1548134720985" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -462,7 +484,14 @@
       <option name="project" value="LOCAL" />
       <updated>1547686676941</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="+add gamerule drowninwater&#10;+add gamerule ExplosiveRespawn">
+      <created>1548134091261</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1548134091261</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -598,25 +627,11 @@
     <MESSAGE value="+add LICENSE.txt  MITLicense&#10;+fix Readme.md" />
     <MESSAGE value="fix DesartDamage bugfix&#10;fix EntityKillPenalty   EnderDragonReward 5000 to 20000 &#10;&#10;+add torchplacepenalty" />
     <MESSAGE value="+add LuckyEgg&#10;+add SkeltonChangeReward&#10;&#10;+fix DesartDamage percent 0.5% Damage *2" />
-    <option name="LAST_COMMIT_MESSAGE" value="+add LuckyEgg&#10;+add SkeltonChangeReward&#10;&#10;+fix DesartDamage percent 0.5% Damage *2" />
+    <MESSAGE value="+add gamerule drowninwater&#10;+add gamerule ExplosiveRespawn" />
+    <option name="LAST_COMMIT_MESSAGE" value="+add gamerule drowninwater&#10;+add gamerule ExplosiveRespawn" />
   </component>
   <component name="editorHistoryManager">
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_191/jre/lib/rt.jar!/java/lang/Object.class" />
-    <entry file="file://$PROJECT_DIR$/Readme.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="714">
-            <caret line="42" selection-start-line="42" selection-end-line="42" />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" lean-forward="true" selection-start-line="7" selection-end-line="7" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/LICENSE.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="187">
@@ -684,16 +699,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/sitoa/minecraft/plugin/ConditionPoint/ScoreManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1050">
-          <caret line="85" selection-start-line="85" selection-end-line="85" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/gitCredentialsMinecraftMOD.csv">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -723,19 +728,6 @@
           <caret line="70" column="21" selection-start-line="70" selection-start-column="21" selection-end-line="70" selection-end-column="21" />
           <folding>
             <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/sitoa/minecraft/plugin/ConditionPoint/GameRule/BaseRule.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="16" column="36" selection-start-line="16" selection-start-column="36" selection-end-line="16" selection-end-column="36" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#426#427#0" expanded="true" />
-            <element signature="method#getPlayerTeam#0;class#BaseRule#0" />
-            <element signature="method#changePoint#0;class#BaseRule#0" />
           </folding>
         </state>
       </provider>
@@ -773,35 +765,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/sitoa/minecraft/plugin/ConditionPoint/GameRule/Rules/PlayerTamedtoPoint.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="13" column="42" lean-forward="true" selection-start-line="13" selection-start-column="42" selection-end-line="13" selection-end-column="42" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/sitoa/minecraft/plugin/ConditionPoint/GameRule/Rules/DrowninWater.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="300">
           <caret line="20" selection-start-line="20" selection-end-line="20" />
           <folding>
             <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/sitoa/minecraft/plugin/ConditionPoint/GameRule/GameRuleManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="202">
-          <caret line="82" column="30" selection-start-line="82" selection-start-column="30" selection-end-line="82" selection-end-column="30" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#getInstance#0;class#GameRuleManager#0" />
-            <element signature="method#firstLoad#0;class#GameRuleManager#0" />
-            <element signature="method#GameRule#0;class#GameRule#0;class#GameRuleManager#0" />
           </folding>
         </state>
       </provider>
@@ -823,10 +792,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/sitoa/minecraft/plugin/ConditionPoint/GameRule/Rules/LuckyEgg.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/sitoa/minecraft/plugin/ConditionPoint/GameRule/Rules/PlayerTamedtoPoint.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="15" column="16" lean-forward="true" selection-start-line="15" selection-start-column="16" selection-end-line="16" selection-end-column="33" />
+        <state relative-caret-position="195">
+          <caret line="13" column="42" lean-forward="true" selection-start-line="13" selection-start-column="42" selection-end-line="13" selection-end-column="42" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -840,6 +809,67 @@
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/sitoa/minecraft/plugin/ConditionPoint/GameRule/GameRuleManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="958">
+          <caret line="82" column="30" selection-start-line="82" selection-start-column="30" selection-end-line="82" selection-end-column="30" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#getInstance#0;class#GameRuleManager#0" />
+            <element signature="method#firstLoad#0;class#GameRuleManager#0" />
+            <element signature="method#GameRule#0;class#GameRule#0;class#GameRuleManager#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/sitoa/minecraft/plugin/ConditionPoint/GameRule/BaseRule.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="205">
+          <caret line="16" column="36" selection-start-line="16" selection-start-column="36" selection-end-line="16" selection-end-column="36" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#426#427#0" expanded="true" />
+            <element signature="method#getPlayerTeam#0;class#BaseRule#0" />
+            <element signature="method#changePoint#0;class#BaseRule#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/sitoa/minecraft/plugin/ConditionPoint/GameRule/Rules/LuckyEgg.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="15" column="16" lean-forward="true" selection-start-line="15" selection-start-column="16" selection-end-line="16" selection-end-column="33" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/sitoa/minecraft/plugin/ConditionPoint/ScoreManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="505">
+          <caret line="85" selection-start-line="85" selection-end-line="85" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Readme.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="472">
+            <caret line="76" column="33" selection-start-line="76" selection-start-column="33" selection-end-line="76" selection-end-column="33" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" lean-forward="true" selection-start-line="7" selection-end-line="7" />
         </state>
       </provider>
     </entry>
