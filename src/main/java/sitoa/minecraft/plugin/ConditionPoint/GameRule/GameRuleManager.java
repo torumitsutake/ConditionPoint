@@ -84,7 +84,9 @@ public class GameRuleManager {
         TameReward("tamereward", new PlayerTamedtoPoint()),
         TorchPenalty("torchpenalty",new TorchPlacePenalty()),
         LuckyEgg("luckyegg",new LuckyEgg()),
-        SkeltonReward("skeltonchangereward", new SkeltonChangeReward());
+        SkeltonReward("skeltonchangereward", new SkeltonChangeReward()),
+        DrowninWater("drowninwater",new DrowninWater()),
+        ExplosiveRespawn("explosiverespawn",new ExplosiveRespawn());
 
         private String cofigName;
         private BaseRule rule;

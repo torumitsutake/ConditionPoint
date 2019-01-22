@@ -25,4 +25,5 @@ ruleconfig:
   torchpenalty: true
   luckyegg: true
   skeltonchangereward: true
-
+  drowninwater: true
+  explosiverespawn: true
