@@ -9,6 +9,7 @@ import sitoa.minecraft.plugin.ConditionPoint.ConditionPoint;
 import sitoa.minecraft.plugin.ConditionPoint.GameRule.BaseRuleListener;
 
 public class ExplosiveRespawn extends BaseRuleListener {
+
     @EventHandler
     public void onPlayerDeath(EntityDamageEvent e){
         if(ConditionPoint.gameRunning()){

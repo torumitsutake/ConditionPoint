@@ -1,6 +1,7 @@
 package sitoa.minecraft.plugin.ConditionPoint;
 
 import org.bukkit.*;
+import org.bukkit.boss.BossBar;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
@@ -53,6 +54,13 @@ public class ConditionPoint extends JavaPlugin {
                 Bukkit.broadcastMessage(ChatColor.AQUA+"ゲーム時間は"+gametime+"分です！！");
                 timer = new GameTimer(this,gametime);
                 timer.runTaskTimer(this,10,20);
+
+                BossBar bossbar = BossBarManager.getInstance(this).getBossBar();
+                bossbar.removeAll();
+                for(Player p : Bukkit.getOnlinePlayers()){
+                    bossbar.addPlayer(p);
+                }
+
          return true;
         }else
             //ゲームリセットコマンド

@@ -4,6 +4,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.OfflinePlayer;
+import org.bukkit.boss.BossBar;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.scheduler.BukkitRunnable;
@@ -107,14 +108,19 @@ public class GameTimer extends BukkitRunnable {
             for(Player p : MVPs){
                 Bukkit.broadcastMessage(ChatColor.GOLD+"[MVP]"+p.getDisplayName()+"   "+SM.getPointfromPlayer(p)+"pt");
             }
+            BossBar  bossbar = BossBarManager.getInstance(plugin).getBossBar();
+            bossbar.removeAll();
+
 
         }
         SM.LoadScorefromPlayer();
         //時間表示用スコア設定
-        Objective TeamPoint = board.getObjective(ChatColor.GREEN+"GameInfo");
         int minutes = (LIMITTIME-counter)/60;
-        Score Time = TeamPoint.getScore(ChatColor.GREEN+"Time[min]:");
-        Time.setScore(minutes);
+        BossBar  bossbar = BossBarManager.getInstance(plugin).getBossBar();
+        bossbar.setTitle("Time;"+minutes);
+        double percent = counter/LIMITTIME;
+        bossbar.setProgress(percent);
+
         counter++;
     }
 

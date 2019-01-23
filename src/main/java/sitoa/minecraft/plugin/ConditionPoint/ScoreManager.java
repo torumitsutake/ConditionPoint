@@ -198,7 +198,6 @@ public class ScoreManager {
         Scoreboard board = SBM.getMainScoreboard();
         board.resetScores(ChatColor.RED + "RedPoint:");
         board.resetScores(ChatColor.BLUE + "BluePoint:");
-        board.resetScores(ChatColor.GREEN+"Time[min]:");
     }
 
 
