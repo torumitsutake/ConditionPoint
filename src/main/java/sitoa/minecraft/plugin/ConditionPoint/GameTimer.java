@@ -17,6 +17,7 @@ public class GameTimer extends BukkitRunnable {
     int LIMITTIME = 300;
     private final JavaPlugin plugin;
     ScoreManager SM;
+    BossBarManager BBM;
 
 
     public GameTimer(JavaPlugin plugin, int TimerLimit){
@@ -29,12 +30,15 @@ public class GameTimer extends BukkitRunnable {
         this.plugin = plugin;
         counter = -5;
         SM = ScoreManager.getInstance();
+        BBM = BossBarManager.getInstance();
 
     }
 
 
     @Override
     public void run(){
+        counter++;
+        BossBar  bossbar = BBM.getBossBar();
         ScoreboardManager SBM = Bukkit.getScoreboardManager();
         Scoreboard board = SBM.getMainScoreboard();
         if(counter < 0){
@@ -108,7 +112,6 @@ public class GameTimer extends BukkitRunnable {
             for(Player p : MVPs){
                 Bukkit.broadcastMessage(ChatColor.GOLD+"[MVP]"+p.getDisplayName()+"   "+SM.getPointfromPlayer(p)+"pt");
             }
-            BossBar  bossbar = BossBarManager.getInstance(plugin).getBossBar();
             bossbar.removeAll();
 
 
@@ -116,12 +119,14 @@ public class GameTimer extends BukkitRunnable {
         SM.LoadScorefromPlayer();
         //時間表示用スコア設定
         int minutes = (LIMITTIME-counter)/60;
-        BossBar  bossbar = BossBarManager.getInstance(plugin).getBossBar();
         bossbar.setTitle("Time;"+minutes);
-        double percent = counter/LIMITTIME;
-        bossbar.setProgress(percent);
+        double percent = (double)counter/(double)LIMITTIME;
+        double progress = 1.0 - percent;
+        if(percent < 0 || percent > 1.0){
+            return;
+        }
+        bossbar.setProgress(progress);
 
-        counter++;
     }
 
 }

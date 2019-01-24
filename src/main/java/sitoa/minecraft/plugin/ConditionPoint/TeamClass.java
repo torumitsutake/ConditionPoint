@@ -65,6 +65,15 @@ public class TeamClass {
             teamBlue.addPlayer(player);
 
             return true;
+        }else if(team.equalsIgnoreCase("none")){
+            String plteam = getPlayerTeam(player);
+            if(plteam.equalsIgnoreCase("red")){
+                teamRed.removePlayer(player);
+            }else if(plteam.equalsIgnoreCase("blue")) {
+                teamBlue.removePlayer(player);
+            }
+
+            return true;
         }
         return false;
     }
@@ -77,5 +86,20 @@ public class TeamClass {
         for(OfflinePlayer joinplayer: teamBlue.getPlayers()){
             teamBlue.removePlayer(joinplayer);
         }
+    }
+
+    public String getPlayerTeam(Player p){
+
+        ScoreboardManager manager = Bukkit.getScoreboardManager();
+        Scoreboard board = manager.getMainScoreboard();
+        if(board.getTeam("REDTEAM").getPlayers().contains(p)){
+            return "red";
+        }else
+        if(board.getTeam("BLUETEAM").getPlayers().contains(p)){
+            return "blue";
+        }else{
+            return "none";
+        }
+
     }
 }

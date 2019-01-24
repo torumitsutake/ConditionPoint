@@ -14,6 +14,7 @@ public class ConditionPoint extends JavaPlugin {
     ScoreManager SM;
     GameRuleManager GRM;
     ChestLock CL;
+    BossBarManager BBM;
     public static boolean gamestart = false;
     @Override
     public void onEnable(){
@@ -25,8 +26,12 @@ public class ConditionPoint extends JavaPlugin {
         GRM = GameRuleManager.getInstance();
         GRM.setPlugin(this);
         GRM.firstLoad();
+        BBM = BossBarManager.getInstance();
+        BBM.setPlugn(this);
+        BBM.prepareBossbar();
         //リスナー登録
         getServer().getPluginManager().registerEvents(new ListenerClass(),this);
+        getServer().getPluginManager().registerEvents(new WorldGuardClass(this),this);
     }
 
     @Override
@@ -55,7 +60,7 @@ public class ConditionPoint extends JavaPlugin {
                 timer = new GameTimer(this,gametime);
                 timer.runTaskTimer(this,10,20);
 
-                BossBar bossbar = BossBarManager.getInstance(this).getBossBar();
+                BossBar bossbar = BBM.getBossBar();
                 bossbar.removeAll();
                 for(Player p : Bukkit.getOnlinePlayers()){
                     bossbar.addPlayer(p);

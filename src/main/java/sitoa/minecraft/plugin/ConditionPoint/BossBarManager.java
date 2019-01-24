@@ -11,15 +11,22 @@ import org.bukkit.plugin.java.JavaPlugin;
 public class BossBarManager  implements Listener {
     public static BossBarManager instance;
     public static JavaPlugin plugin;
+    public BossBar bossbar;
 
-    public static  BossBarManager getInstance(JavaPlugin p){
+    public static  BossBarManager getInstance(){
         if(instance == null){
             instance = new BossBarManager();
-            plugin = p;
         }
         return instance;
     }
-    BossBar bossbar = plugin.getServer().createBossBar("Time", BarColor.GREEN, BarStyle.SOLID);
+    public void setPlugn(ConditionPoint pl){
+        plugin = pl;
+    }
+    public void prepareBossbar(){
+        bossbar = plugin.getServer().createBossBar("Time", BarColor.GREEN, BarStyle.SOLID);
+        plugin.getServer().getPluginManager().registerEvents(this,plugin);
+    }
+
 
     //プレイヤー登録イベント
     @EventHandler

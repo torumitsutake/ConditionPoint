@@ -14,7 +14,6 @@ import org.bukkit.event.entity.EntityPickupItemEvent;
 import org.bukkit.event.inventory.InventoryOpenEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.event.player.PlayerLoginEvent;
-import org.bukkit.event.player.PlayerPickupItemEvent;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.scoreboard.Scoreboard;
@@ -150,6 +149,7 @@ public class ListenerClass implements Listener {
         if(!ConditionPoint.gameRunning()){
             if(!e.getPlayer().isOp()){
                 e.setCancelled(true);
+
             }
         }
     }
