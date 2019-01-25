@@ -47,6 +47,7 @@ public class DevotedDiamond extends BaseRuleListener {
     public void onInteractEvent(PlayerInteractEvent e){
         if(ConditionPoint.gameRunning()){
             if(isEnable()){
+
                 if(e.getItem() == null){
                     return;
                 }
@@ -87,7 +88,7 @@ public class DevotedDiamond extends BaseRuleListener {
             if(isEnable()){
                 if(e.getInventory().getName().equalsIgnoreCase("TargetList")){
                     ItemStack enemySkull = e.getCurrentItem();
-                    if(enemySkull == null){
+                    if(enemySkull.getType() == Material.AIR){
                         return;
                     }
                     SkullMeta skullmeta = (SkullMeta)enemySkull.getItemMeta();
