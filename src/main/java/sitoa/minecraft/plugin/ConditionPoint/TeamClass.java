@@ -102,4 +102,39 @@ public class TeamClass {
         }
 
     }
+
+    public void sendChattoTeam(String team , String args[], String sender){
+
+        ScoreboardManager manager = Bukkit.getScoreboardManager();
+        Scoreboard board = manager.getMainScoreboard();
+        if(team.equalsIgnoreCase("red")){
+            for(OfflinePlayer pl : board.getTeam("REDTEAM").getPlayers()){
+                if(pl.isOnline()){
+                    Player p = (Player) pl;
+                    String msg = "";
+                    for(String arg : args){
+                        msg += arg + " ";
+
+                    }
+                    p.sendMessage(ChatColor.RED+"TeamChat:<"+sender+">"+msg);
+                }
+            }
+        }
+        if(team.equalsIgnoreCase("blue")){
+            for(OfflinePlayer pl : board.getTeam("BLUETEAM").getPlayers()){
+                if(pl.isOnline()){
+                    Player p = (Player) pl;
+                    String msg = "";
+                    for(String arg : args){
+                        msg += arg + " ";
+
+                    }
+                    p.sendMessage(ChatColor.BLUE+"TeamChat:<"+sender+">"+msg);
+                }
+            }
+
+        }
+
+
+    }
 }

@@ -106,6 +106,66 @@ public class ConditionPoint extends JavaPlugin {
                     }
 
                 }
+                //チームチャット
+                else if(cmd.getName().equalsIgnoreCase("c")){
+
+                    if(sender instanceof Player){
+                        String team = teamclass.getPlayerTeam((Player)sender);
+                        teamclass.sendChattoTeam(team,args,((Player) sender).getDisplayName());
+                    }else{
+                        sender.sendMessage("this command for Player");
+                    }
+                }
+                //ゲームヘルプコマンド
+                else if(cmd.getName().equalsIgnoreCase("gamehelp")){
+                    if(args.length == 1){
+                        if(args[0].equalsIgnoreCase("item")){
+
+                            for(String points : SM.getPointList()){
+                                sender.sendMessage(points);
+                            }
+                        }
+                        else if(args[0].equalsIgnoreCase("rule")){
+                            sender.sendMessage(ChatColor.GREEN+"[----------------ゲームルール----------------]");
+                            sender.sendMessage(ChatColor.GREEN+"このゲームはチームでポイントを稼ぐゲームです。");
+                            sender.sendMessage(ChatColor.GREEN+"ゲーム終了時点でポイントが高かったチームの勝利です。");
+                            sender.sendMessage(ChatColor.GREEN+"ポイントを獲得する方法は様々です。いろいろ試してみてください。");
+                            sender.sendMessage(ChatColor.GREEN+"いろいろなアイテムがポイントになります、詳細は [ /gamehelp item ] でポイントを確認できます。");
+                            sender.sendMessage(ChatColor.GREEN+"");
+                            sender.sendMessage(ChatColor.GREEN+"[-----------------詳細ルール-----------------]");
+                            sender.sendMessage(ChatColor.GREEN+"このゲームにはチェストロック機能、チームチャット機能があります。");
+                            sender.sendMessage(ChatColor.GREEN+"");
+                            sender.sendMessage(ChatColor.GREEN+"[チェストロック機能]");
+                            sender.sendMessage(ChatColor.GREEN+"チェストロックは鉄ブロックを持った状態でチェストをたたくと、ロックがかかって相手チームにはアクセスできなくなります。");
+                            sender.sendMessage(ChatColor.GREEN+"しかし、ロックがかかっているチェストを金ブロックでたたいた場合ロック解除できます。");
+                            sender.sendMessage(ChatColor.GREEN+"");
+                            sender.sendMessage(ChatColor.GREEN+"[チームチャット機能]");
+                            sender.sendMessage(ChatColor.GREEN+"[/c メッセージ]で自チームのみに発信するチャットになります。秘密の会話をしたいときは利用してください。");
+
+
+                        }
+
+                    }else{
+                        sender.sendMessage(ChatColor.GREEN+"[----------------ゲームルール----------------]");
+                        sender.sendMessage(ChatColor.GREEN+"このゲームはチームでポイントを稼ぐゲームです。");
+                        sender.sendMessage(ChatColor.GREEN+"ゲーム終了時点でポイントが高かったチームの勝利です。");
+                        sender.sendMessage(ChatColor.GREEN+"ポイントを獲得する方法は様々です。いろいろ試してみてください。");
+                        sender.sendMessage(ChatColor.GREEN+"いろいろなアイテムがポイントになります、詳細は [ /gamehelp item ] でポイントを確認できます。");
+                        sender.sendMessage(ChatColor.GREEN+"");
+                        sender.sendMessage(ChatColor.GREEN+"[-----------------詳細ルール-----------------]");
+                        sender.sendMessage(ChatColor.GREEN+"このゲームにはチェストロック機能、チームチャット機能があります。");
+                        sender.sendMessage(ChatColor.GREEN+"");
+                        sender.sendMessage(ChatColor.GREEN+"[チェストロック機能]");
+                        sender.sendMessage(ChatColor.GREEN+"チェストロックは鉄ブロックを持った状態でチェストをたたくと、ロックがかかって相手チームにはアクセスできなくなります。");
+                        sender.sendMessage(ChatColor.GREEN+"しかし、ロックがかかっているチェストを金ブロックでたたいた場合ロック解除できます。");
+                        sender.sendMessage(ChatColor.GREEN+"");
+                        sender.sendMessage(ChatColor.GREEN+"[チームチャット機能]");
+                        sender.sendMessage(ChatColor.GREEN+"[/c メッセージ]で自チームのみに発信するチャットになります。秘密の会話をしたいときは利用してください。");
+
+                    }
+
+
+                }
 
 
         return false;

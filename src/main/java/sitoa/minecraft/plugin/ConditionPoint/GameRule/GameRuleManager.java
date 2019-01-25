@@ -77,7 +77,7 @@ public class GameRuleManager {
     /*
     ルールを追加したときはこことconfig.ymlに追記する.
      */
-    protected  enum GameRule {
+    public enum GameRule {
         EntityKillPenalty("entitykillpenalty", new EntityKillPenalty()),
         DesertDamage("desartdamagerule",new DesertDamage()),
         MagmaDeathPointReward("magmadeathtopoint",new MagmaDeathtoPoint()),
@@ -86,7 +86,13 @@ public class GameRuleManager {
         LuckyEgg("luckyegg",new LuckyEgg()),
         SkeltonReward("skeltonchangereward", new SkeltonChangeReward()),
         DrowninWater("drowninwater",new DrowninWater()),
-        ExplosiveRespawn("explosiverespawn",new ExplosiveRespawn());
+        ExplosiveRespawn("explosiverespawn",new ExplosiveRespawn()),
+        EXPMultiple("expmultiple", new ExpMultiplies()),
+        BreedingReward("breedingreward", new BreedingReward()),
+        GravelDamage("graveldamage", new GravelDamage()),
+        Lottery("lottery", new Lottery()),
+        SpawnerBreakReward("spawnerbreakreward",new SpawnerBreakReward()),
+        DevotedDiamond("devoteddiamond", new DevotedDiamond());
 
         private String cofigName;
         private BaseRule rule;

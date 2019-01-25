@@ -4,6 +4,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.scoreboard.Scoreboard;
 import org.bukkit.scoreboard.ScoreboardManager;
+import org.bukkit.scoreboard.Team;
 import sitoa.minecraft.plugin.ConditionPoint.ScoreManager;
 
 public class BaseRule {
@@ -49,6 +50,20 @@ public class BaseRule {
         if(team.equalsIgnoreCase("red") || team.equalsIgnoreCase("blue")){
             ScoreManager SM = ScoreManager.getInstance();
             SM.parmPointChange(team,point);
+        }
+
+    }
+
+    public Team getPlayerEnemyTeamClass(Player p){
+        ScoreboardManager manager = Bukkit.getScoreboardManager();
+        Scoreboard board = manager.getMainScoreboard();
+        if(board.getTeam("BLUETEAM").getPlayers().contains(p)){
+            return board.getTeam("REDTEAM");
+        }else
+        if(board.getTeam("REDTEAM").getPlayers().contains(p)){
+            return board.getTeam("BLUETEAM");
+        }else{
+            return null;
         }
 
     }

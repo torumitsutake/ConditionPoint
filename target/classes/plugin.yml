@@ -28,3 +28,9 @@ commands:
     usages: /setgametime [second]
     permission: sitoa.minecraft.plugin.ConditionPoint.setgametime
     permission-message: you don't have permission
+  c:
+    description: team chat
+    usages: /c [context]
+  gamehelp:
+    description: gamehelp
+    usages: /gamehelp [rule/item]

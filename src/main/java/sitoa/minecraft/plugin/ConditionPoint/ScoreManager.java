@@ -8,6 +8,9 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.PlayerInventory;
 import org.bukkit.scoreboard.*;
+import sitoa.minecraft.plugin.ConditionPoint.GameRule.BaseRule;
+import sitoa.minecraft.plugin.ConditionPoint.GameRule.GameRuleManager;
+import sitoa.minecraft.plugin.ConditionPoint.GameRule.Rules.ExpMultiplies;
 
 import java.util.ArrayList;
 
@@ -42,6 +45,17 @@ public class ScoreManager {
     }
 
     //アイテム→ポイント換算
+
+    //ポイントリスト取得
+
+    public ArrayList<String> getPointList(){
+        ArrayList<String> PointList = new ArrayList<String>();
+        for(POINTITEM item : POINTITEM.values()){
+            PointList.add(ChatColor.AQUA+item.getType().toString()+" : "+ChatColor.GOLD+item.getPoint()+" pt");
+        }
+
+        return PointList;
+    }
 
 
     //Enum管理
@@ -154,6 +168,11 @@ public class ScoreManager {
                 }
                 outscore += (getPoint(item.getType()) * item.getAmount());
             }
+        }
+        GameRuleManager GRM = GameRuleManager.getInstance();
+        ExpMultiplies Expmulti = (ExpMultiplies)GRM.getRules().get(GameRuleManager.GameRule.EXPMultiple);
+        if(Expmulti.isEnable()){
+            outscore = (int) (outscore*(Expmulti.multiple(p)));
         }
         return outscore;
     }

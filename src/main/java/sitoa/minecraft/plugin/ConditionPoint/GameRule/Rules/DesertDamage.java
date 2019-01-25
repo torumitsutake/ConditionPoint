@@ -5,11 +5,18 @@ import org.bukkit.World;
 import org.bukkit.block.Biome;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.player.PlayerMoveEvent;
+import sitoa.minecraft.plugin.ConditionPoint.ConditionPoint;
 import sitoa.minecraft.plugin.ConditionPoint.GameRule.BaseRuleListener;
 
 public class DesertDamage extends BaseRuleListener {
     @EventHandler
     public void onPlayerMoveEvent(PlayerMoveEvent e){
+        if(!ConditionPoint.gameRunning()){
+            return;
+        }
+        if(!this.isEnable()){
+            return;
+        }
         Location loc = e.getPlayer().getLocation();
         World world = loc.getWorld();
         Biome biome = world.getBiome(loc.getBlockX(),loc.getBlockZ());

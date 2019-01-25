@@ -27,3 +27,9 @@ ruleconfig:
   skeltonchangereward: true
   drowninwater: true
   explosiverespawn: true
+  expmultiple: true
+  breedingreward: true
+  graveldamage: true
+  lottery: true
+  spawnerbreakreward: true
+  devoteddiamond: true
