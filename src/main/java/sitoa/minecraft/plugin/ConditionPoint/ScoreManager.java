@@ -81,7 +81,8 @@ public class ScoreManager {
         GASTTEAR(100, Material.GHAST_TEAR),
         HEAD(2000,Material.SKULL_ITEM),
         ENCHANTBOOK(100,Material.ENCHANTED_BOOK),
-        PUMPKIN(20,Material.PUMPKIN);
+        PUMPKIN(20,Material.PUMPKIN),
+        FISH(30,Material.RAW_FISH);
 
 
 

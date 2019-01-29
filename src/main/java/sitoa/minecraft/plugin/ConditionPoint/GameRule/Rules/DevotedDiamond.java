@@ -23,6 +23,7 @@ import sitoa.minecraft.plugin.ConditionPoint.TeamClass;
 import java.util.ArrayList;
 
 public class DevotedDiamond extends BaseRuleListener {
+
     @EventHandler
     public void onPlayerBreak(BlockBreakEvent e){
         if(ConditionPoint.gameRunning()){

@@ -87,7 +87,7 @@ public class ListenerClass implements Listener {
 
 
             //鍵付き
-            if(e.getPlayer().getItemInHand().getType() == Material.IRON_BLOCK){
+            if(e.getPlayer().getItemInHand().getType() == Material.COAL_BLOCK){
                 int result = CL.lockChest(targetInventory,targetChest.getLocation(),team);
                 System.out.println("LockCode:"+result);
                 switch(result){
@@ -107,7 +107,7 @@ public class ListenerClass implements Listener {
 
             }
             //鍵開け
-            if(e.getPlayer().getItemInHand().getType() == Material.GOLD_BLOCK){
+            if(e.getPlayer().getItemInHand().getType() == Material.REDSTONE_BLOCK){
                     if(CL.UnlockChest(targetChest.getLocation())){
                         e.getPlayer().sendMessage("ロックが解除されました");
                         ItemStack item = e.getPlayer().getItemInHand();
