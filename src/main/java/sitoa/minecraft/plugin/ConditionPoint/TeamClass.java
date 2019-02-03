@@ -14,7 +14,8 @@ public class TeamClass {
     Objective teampoint;
 
 
-    public TeamClass(){  // メインスコアボードを取得します。
+    public TeamClass(){
+        // メインスコアボードを取得します。
         ScoreboardManager manager = Bukkit.getScoreboardManager();
         Scoreboard board = manager.getMainScoreboard();
 
